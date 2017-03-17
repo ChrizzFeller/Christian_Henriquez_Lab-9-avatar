@@ -294,7 +294,7 @@ int main() {
 						cout << "Vida del player 1: " << hp2 << endl;
 						hp2 = listaBenders.at(player2) -> ataqueE((listaBenders.at(player2)), (listaBenders.at(player1)));
 						listaBenders.at(player1) -> setHP(hp2);
-						cout << "Vida del player 2 despues del ataque especial: " << hp2 << endl;
+						cout << "Vida del player 1 despues del ataque especial: " << hp2 << endl;
 						cout << "Ataque especial terminado!" << endl;
 					} else if (respP == 3)
 					{
@@ -307,25 +307,25 @@ int main() {
 				} else {
 					if (respP == 1)
 					{
-						double atk1 = listaBenders.at(player1) -> getOfensa();
-						double def2 = listaBenders.at(player2) -> getDefensa();
-						double hp2 = listaBenders.at(player2) -> getHP();
-						cout << "Vida del player 2: " << hp2 << endl;
-						hp2 = listaBenders.at(player1) -> ataqueR(atk1, def2, hp2);
-						listaBenders.at(player2) -> setHP(hp2);
-						cout << "Vida del player 2 despues del ataque: " << hp2 << endl;
+						double atk1 = listaBenders.at(player2) -> getOfensa();
+						double def2 = listaBenders.at(player1) -> getDefensa();
+						double hp2 = listaBenders.at(player1) -> getHP();
+						cout << "Vida del player 1: " << hp2 << endl;
+						hp2 = listaBenders.at(player2) -> ataqueR(atk1, def2, hp2);
+						listaBenders.at(player1) -> setHP(hp2);
+						cout << "Vida del player 1 despues del ataque: " << hp2 << endl;
 						cout << "Ataque hecho!" << endl;
 					} else if (respP == 2)
 					{
 						double hp2;
-						cout << "Vida del player 2: " << hp2 << endl;
-						hp2 = listaBenders.at(player1) -> ataqueE((listaBenders.at(player1)), (listaBenders.at(player2)));
-						listaBenders.at(player2) -> setHP(hp2);
-						cout << "Vida del player 2 despues del ataque especial: " << hp2 << endl;
+						cout << "Vida del player 1: " << hp2 << endl;
+						hp2 = listaBenders.at(player2) -> ataqueE((listaBenders.at(player2)), (listaBenders.at(player1)));
+						listaBenders.at(player1) -> setHP(hp2);
+						cout << "Vida del player 1 despues del ataque especial: " << hp2 << endl;
 						cout << "Ataque especial terminado!" << endl;
 					} else {
 						fight = false;
-						cout << "El primer jugador ha escapado!" << endl;
+						cout << "El segundo jugador ha escapado!" << endl;
 					}
 				}
 
