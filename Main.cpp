@@ -172,14 +172,40 @@ int main() {
 						cout << "Ataque especial terminado!" << endl;
 					} else if (respP == 3)
 					{
-						dynamic_cast<earthbenders*>(listaBenders.at(player1)) -> espiar(listaBenders.at(player2));
-						cout << "Epiar terminado!" << endl;
+						(dynamic_cast<earthbenders*>(listaBenders.at(player1))) -> espiar(listaBenders.at(player2));
+						cout << "Espiar terminado!" << endl;
 					} else {
-
+						fight = false;
+						cout << "El primer jugador ha escapado!" << endl;
 					}
 				} else if (typeid(listaBenders.at(player1))==typeid(waterbenders))
 				{
-					
+					if (respP == 1)
+					{
+						double atk1 = listaBenders.at(player1) -> getOfensa();
+						double def2 = listaBenders.at(player2) -> getDefensa();
+						double hp2 = listaBenders.at(player2) -> getHP();
+						cout << "Vida del player 2: " << hp2 << endl;
+						hp2 = listaBenders.at(player1) -> ataqueR(atk1, def2, hp2);
+						listaBenders.at(player2) -> setHP(hp2);
+						cout << "Vida del player 2 despues del ataque: " << hp2 << endl;
+						cout << "Ataque hecho!" << endl;
+					} else if (respP == 2)
+					{
+						double hp2;
+						cout << "Vida del player 2: " << hp2 << endl;
+						hp2 = listaBenders.at(player1) -> ataqueE((listaBenders.at(player1)), (listaBenders.at(player2)));
+						listaBenders.at(player2) -> setHP(hp2);
+						cout << "Vida del player 2 despues del ataque especial: " << hp2 << endl;
+						cout << "Ataque especial terminado!" << endl;
+					} else if (respP == 3)
+					{
+						(dynamic_cast<waterbenders*>(listaBenders.at(player1))) -> heal(listaBenders.at(player2));
+						cout << "Espiar terminado!" << endl;
+					} else {
+						fight = false;
+						cout << "El primer jugador ha escapado!" << endl;
+					}
 				} else {
 					
 				}

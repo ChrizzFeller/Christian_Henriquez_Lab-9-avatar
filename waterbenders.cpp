@@ -53,8 +53,8 @@ double waterbenders::ataqueE(Bender* p1, Bender* p2) {
 	}
 }
 
-double waterbenders::heal(double atk2, double hp1) {
-	if (atk2 >= 110)
+double waterbenders::heal(double atk1, double hp1) {
+	if (atk1 >= 110)
 	{
 		hp1 = hp1 + 75;
 	} else {

@@ -53,7 +53,7 @@ double earthbenders::ataqueE(Bender* p1, Bender* p2) {
 	}
 }
 
-void espiar(Bender* p2) {
+void earthbenders::espiar(Bender* p2) {
 	string nombreT = p2 -> getNombre();
 	cout << "Estos son los stats de: " << nombreT << endl;
 	cout << "HP: " << (p2 -> getHP()) << endl;
