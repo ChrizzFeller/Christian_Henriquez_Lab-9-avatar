@@ -232,8 +232,104 @@ int main() {
 				}
 
 				//-------------------------------------------------------------------------------
-				
 
+				cout << "Es el turno de: " << listaBenders.at(player2) -> getNombre() << endl;
+				cout << "Que desea hacer?" << endl;
+				if (typeid(listaBenders.at(player2))==typeid(earthbenders))
+				{
+					cout << "1) Atacar" << endl << "2) Usar Ataque Especial" << endl << "3) Espiar" << endl << "4) Huir" << endl;
+					cin >> respP;
+				} else if (typeid(listaBenders.at(player2))==typeid(waterbenders))
+				{
+					cout << "1) Atacar" << endl << "2) Usar Ataque Especial" << endl << "3) Curarse" << endl << "4) Huir" << endl;
+					cin >> respP;
+				} else {
+					cout << "1) Atacar" << endl << "2) Usar Ataque Especial" << endl << "3) Huir" << endl;
+					cin >> respP;
+				}
+
+				if (typeid(listaBenders.at(player2))==typeid(earthbenders))
+				{
+					if (respP == 1)
+					{
+						double atk1 = listaBenders.at(player2) -> getOfensa();
+						double def2 = listaBenders.at(player1) -> getDefensa();
+						double hp2 = listaBenders.at(player1) -> getHP();
+						cout << "Vida del player 1: " << hp2 << endl;
+						hp2 = listaBenders.at(player2) -> ataqueR(atk1, def2, hp2);
+						listaBenders.at(player1) -> setHP(hp2);
+						cout << "Vida del player 1 despues del ataque: " << hp2 << endl;
+						cout << "Ataque hecho!" << endl;
+					} else if (respP == 2)
+					{
+						double hp2;
+						cout << "Vida del player 1: " << hp2 << endl;
+						hp2 = listaBenders.at(player2) -> ataqueE((listaBenders.at(player2)), (listaBenders.at(player1)));
+						listaBenders.at(player1) -> setHP(hp2);
+						cout << "Vida del player 1 despues del ataque especial: " << hp2 << endl;
+						cout << "Ataque especial terminado!" << endl;
+					} else if (respP == 3)
+					{
+						(dynamic_cast<earthbenders*>(listaBenders.at(player2))) -> espiar(listaBenders.at(player1));
+						cout << "Espiar terminado!" << endl;
+					} else {
+						fight = false;
+						cout << "El segundo jugador ha escapado!" << endl;
+					}
+				} else if (typeid(listaBenders.at(player2))==typeid(waterbenders))
+				{
+					if (respP == 1)
+					{
+						double atk1 = listaBenders.at(player2) -> getOfensa();
+						double def2 = listaBenders.at(player1) -> getDefensa();
+						double hp2 = listaBenders.at(player1) -> getHP();
+						cout << "Vida del player 1: " << hp2 << endl;
+						hp2 = listaBenders.at(player2) -> ataqueR(atk1, def2, hp2);
+						listaBenders.at(player1) -> setHP(hp2);
+						cout << "Vida del player 1 despues del ataque: " << hp2 << endl;
+						cout << "Ataque hecho!" << endl;
+					} else if (respP == 2)
+					{
+						double hp2;
+						cout << "Vida del player 1: " << hp2 << endl;
+						hp2 = listaBenders.at(player2) -> ataqueE((listaBenders.at(player2)), (listaBenders.at(player1)));
+						listaBenders.at(player1) -> setHP(hp2);
+						cout << "Vida del player 2 despues del ataque especial: " << hp2 << endl;
+						cout << "Ataque especial terminado!" << endl;
+					} else if (respP == 3)
+					{
+						listaBenders.at(player2) -> setHP((dynamic_cast<waterbenders*>(listaBenders.at(player2))) -> heal(listaBenders.at(player2) -> getOfensa(), listaBenders.at(player2) -> getHP()));
+						cout << "Heal terminado!" << endl;
+					} else {
+						fight = false;
+						cout << "El segundo jugador ha escapado!" << endl;
+					}
+				} else {
+					if (respP == 1)
+					{
+						double atk1 = listaBenders.at(player1) -> getOfensa();
+						double def2 = listaBenders.at(player2) -> getDefensa();
+						double hp2 = listaBenders.at(player2) -> getHP();
+						cout << "Vida del player 2: " << hp2 << endl;
+						hp2 = listaBenders.at(player1) -> ataqueR(atk1, def2, hp2);
+						listaBenders.at(player2) -> setHP(hp2);
+						cout << "Vida del player 2 despues del ataque: " << hp2 << endl;
+						cout << "Ataque hecho!" << endl;
+					} else if (respP == 2)
+					{
+						double hp2;
+						cout << "Vida del player 2: " << hp2 << endl;
+						hp2 = listaBenders.at(player1) -> ataqueE((listaBenders.at(player1)), (listaBenders.at(player2)));
+						listaBenders.at(player2) -> setHP(hp2);
+						cout << "Vida del player 2 despues del ataque especial: " << hp2 << endl;
+						cout << "Ataque especial terminado!" << endl;
+					} else {
+						fight = false;
+						cout << "El primer jugador ha escapado!" << endl;
+					}
+				}
+
+				//-------------------------------------------------------------------------------
 			}
 		} else {
 			seguir = false;
