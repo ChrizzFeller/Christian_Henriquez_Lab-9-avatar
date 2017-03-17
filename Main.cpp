@@ -21,6 +21,7 @@ int main() {
 	bool seguir = true;
 
 	while (seguir == true) {
+		cout << endl;
 		cout << "-----Menu-----" << endl;
 		cout << "1) Crear Bender" << endl;
 		cout << "2) Listar Benders" << endl;
@@ -96,6 +97,7 @@ int main() {
 		} else if (respuesta1 == 2)
 		{
 			string nombreT;
+			cout << "Los benders disponibles son: " << endl;
 			for (int i = 0; i < listaBenders.size(); ++i)
 			{
 				nombreT = listaBenders.at(i) -> getNombre();
@@ -103,7 +105,88 @@ int main() {
 			}
 		} else if (respuesta1 == 3)
 		{
-			/* code */
+			string nombreT;
+			cout << "Escoga el primer bender." << endl;
+			for (int i = 0; i < listaBenders.size(); ++i)
+			{
+				nombreT = listaBenders.at(i) -> getNombre();
+				cout << (i) << ") " << nombreT << endl;
+			}
+			int player1;
+			cin >> player1;
+			while (player1 < 0 || player1 > listaBenders.size() - 1) {
+				cout << "Numero invalido, ingrese su opcion de nuevo!" << endl;
+				cin >> player1;
+			}
+
+			cout << "Escoga el segundo bender." << endl;
+			for (int i = 0; i < listaBenders.size(); ++i)
+			{
+				nombreT = listaBenders.at(i) -> getNombre();
+				cout << (i) << ") " << nombreT << endl;
+			}
+			int player2;
+			cin >> player2;
+			while (player2 < 0 || player2 > listaBenders.size() - 1 || player2 == player1) {
+				cout << "Numero invalido, ingrese su opcion de nuevo!" << endl;
+				cin >> player2;
+			}
+
+			bool fight = true;
+			while (fight == true) {
+				cout << "Es el turno de: " << listaBenders.at(player1) -> getNombre() << endl;
+				cout << "Que desea hacer?" << endl;
+				int respP;
+				if (typeid(listaBenders.at(player1))==typeid(earthbenders))
+				{
+					cout << "1) Atacar" << endl << "2) Usar Ataque Especial" << endl << "3) Espiar" << endl << "4) Huir" << endl;
+					cin >> respP;
+				} else if (typeid(listaBenders.at(player1))==typeid(waterbenders))
+				{
+					cout << "1) Atacar" << endl << "2) Usar Ataque Especial" << endl << "3) Curarse" << endl << "4) Huir" << endl;
+					cin >> respP;
+				} else {
+					cout << "1) Atacar" << endl << "2) Usar Ataque Especial" << endl << "3) Huir" << endl;
+					cin >> respP;
+				}
+
+				if (typeid(listaBenders.at(player1))==typeid(earthbenders))
+				{
+					if (respP == 1)
+					{
+						double atk1 = listaBenders.at(player1) -> getOfensa();
+						double def2 = listaBenders.at(player2) -> getDefensa();
+						double hp2 = listaBenders.at(player2) -> getHP();
+						cout << "Vida del player 2: " << hp2 << endl;
+						hp2 = listaBenders.at(player1) -> ataqueR(atk1, def2, hp2);
+						listaBenders.at(player2) -> setHP(hp2);
+						cout << "Vida del player 2 despues del ataque: " << hp2 << endl;
+						cout << "Ataque hecho!" << endl;
+					} else if (respP == 2)
+					{
+						double hp2;
+						cout << "Vida del player 2: " << hp2 << endl;
+						hp2 = listaBenders.at(player1) -> ataqueE((listaBenders.at(player1)), (listaBenders.at(player2)));
+						listaBenders.at(player2) -> setHP(hp2);
+						cout << "Vida del player 2 despues del ataque especial: " << hp2 << endl;
+						cout << "Ataque especial terminado!" << endl;
+					} else if (respP == 3)
+					{
+						dynamic_cast<earthbenders*>(listaBenders.at(player1)) -> espiar(listaBenders.at(player2));
+						cout << "Epiar terminado!" << endl;
+					} else {
+
+					}
+				} else if (typeid(listaBenders.at(player1))==typeid(waterbenders))
+				{
+					
+				} else {
+					
+				}
+
+				//-------------------------------------------------------------------------------
+
+			}
 		} else {
 			seguir = false;
 			cout << "Nos vemos luego!" << endl;
