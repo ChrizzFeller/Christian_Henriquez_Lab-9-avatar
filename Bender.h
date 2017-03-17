@@ -23,7 +23,7 @@ class Bender {
 		void setHP(double);
 		void setDefensa(double);
 		void setOfensa(double);
-		void setNivelDS(double);
+		void setNivelDS(int);
 
 		//Getters
 		string getNombre();

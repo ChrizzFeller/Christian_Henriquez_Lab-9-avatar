@@ -6,7 +6,7 @@
 
 using namespace std;
 
-class firebenders : Bender {
+class firebenders : public Bender {
 
 	private:
 		double debilidad;
@@ -15,6 +15,8 @@ class firebenders : Bender {
 		firebenders();
 		firebenders(string, double, double, double, int);
 		double getDebilidad();
+		double ataqueR(double, double, double);
+		double ataqueE(Bender*, Bender*);
 		
 };
 

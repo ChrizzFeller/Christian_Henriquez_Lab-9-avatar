@@ -6,7 +6,7 @@
 
 using namespace std;
 
-class waterbenders : Bender {
+class waterbenders : public Bender {
 
 	private:
 		double debilidad;
@@ -16,6 +16,8 @@ class waterbenders : Bender {
 		waterbenders(string, double, double, double, int);
 		double getDebilidad();
 		double heal(double, double);
+		double ataqueR(double, double, double);
+		double ataqueE(Bender*, Bender*);
 		
 };
 

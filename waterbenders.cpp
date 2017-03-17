@@ -1,4 +1,5 @@
 #include "waterbenders.h"
+#include "earthbenders.h"
 #include <typeinfo>
 
 using namespace std;
@@ -31,7 +32,7 @@ double waterbenders::ataqueE(Bender* p1, Bender* p2) {
 	double hp2 = p2 -> getHP();
 	if (typeid(*p2)==typeid(earthbenders))
 	{
-		atk1 = atk1 * (p2 -> getDebilidad());
+		atk1 = atk1 * (dynamic_cast<earthbenders*>(p2) -> getDebilidad());
 		atk1 = atk1 - def2;
 		if (atk1 > 0)
 		{

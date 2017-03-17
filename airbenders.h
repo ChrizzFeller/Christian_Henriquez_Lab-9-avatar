@@ -6,7 +6,7 @@
 
 using namespace std;
 
-class airbenders : Bender {
+class airbenders : public Bender {
 
 	private:
 		double debilidad;
@@ -15,6 +15,8 @@ class airbenders : Bender {
 		airbenders();
 		airbenders(string, double, double, double, int);
 		double getDebilidad();
+		double ataqueR(double, double, double);
+		double ataqueE(Bender*, Bender*);
 
 };
 
