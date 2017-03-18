@@ -328,7 +328,14 @@ int main() {
 						cout << "El segundo jugador ha escapado!" << endl;
 					}
 				}
-
+				if (listaBenders.at(player1) -> getHP() < 0)
+				{
+					cout << "El segundo player ha ganado!" << endl;
+					seguir = false;
+				} else if(listaBenders.at(player2) -> getHP() < 0) {
+					cout << "El primer player ha ganado!" << endl;
+					seguir = false;
+				}
 				//-------------------------------------------------------------------------------
 			}
 		} else {
